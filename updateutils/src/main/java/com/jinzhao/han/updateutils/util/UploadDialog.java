@@ -58,7 +58,7 @@ public class UploadDialog extends DialogFragment {
     }
 
     private void initData() {
-        if (updateBean == null) {
+        if (updateBean == null || content == null) {
             return;
         }
         String contentStr = "发现新版本:" + updateBean.getServerVersionName() + "\n是否下载更新?";

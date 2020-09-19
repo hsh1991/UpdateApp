@@ -28,10 +28,11 @@ public class UpdateAppUtils {
     public static boolean showNotification = true;
 
     // 将所有的 属性 放入model
-    private UpdateBean updateBean = new UpdateBean();
+    private UpdateBean updateBean;
 
     private UpdateAppUtils(AppCompatActivity activity) {
         this.activity = activity;
+        updateBean = new UpdateBean();
         getAPPLocalVersion(activity);
     }
 

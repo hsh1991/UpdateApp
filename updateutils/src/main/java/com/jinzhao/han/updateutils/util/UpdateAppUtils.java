@@ -128,6 +128,7 @@ public class UpdateAppUtils {
     private void toUpdate() {
 //        UpdateAppActivity.launch(activity, updateBean);
         UploadDialog dialog = new UploadDialog();
+        dialog.setBeen(updateBean);
         dialog.show(activity.getSupportFragmentManager(), "dialog");
     }
 }

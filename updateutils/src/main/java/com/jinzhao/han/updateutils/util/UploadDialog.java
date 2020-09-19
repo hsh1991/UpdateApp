@@ -52,8 +52,15 @@ public class UploadDialog extends DialogFragment {
         sureBtn = (TextView) view.findViewById(R.id.dialog_confirm_sure);
         cancleBtn = (TextView) view.findViewById(R.id.dialog_confirm_cancle);
         content = (TextView) view.findViewById(R.id.dialog_confirm_title);
+        initData();
+        return view;
 
+    }
 
+    private void initData() {
+        if (updateBean == null) {
+            return;
+        }
         String contentStr = "发现新版本:" + updateBean.getServerVersionName() + "\n是否下载更新?";
         if (!TextUtils.isEmpty(updateBean.getUpdateInfo())) {
             contentStr = "发现新版本:" + updateBean.getServerVersionName() + "是否下载更新?\n\n" + updateBean.getUpdateInfo();
@@ -84,14 +91,17 @@ public class UploadDialog extends DialogFragment {
                 preDownLoad();
             }
         });
-        return view;
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
         getDialog().getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+    }
+
+    public void setBeen(UpdateBean updateBean) {
+        this.updateBean = updateBean;
+        initData();
     }
 
 

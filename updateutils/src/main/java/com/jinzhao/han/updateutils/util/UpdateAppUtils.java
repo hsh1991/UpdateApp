@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.jinzhao.han.updateutils.activity.UpdateAppActivity;
@@ -22,19 +23,19 @@ public class UpdateAppUtils {
     public static final int DOWNLOAD_BY_APP = 1003;
     public static final int DOWNLOAD_BY_BROWSER = 1004;
 
-    private Activity activity;
+    private AppCompatActivity activity;
 
     public static boolean showNotification = true;
 
-   // 将所有的 属性 放入model
+    // 将所有的 属性 放入model
     private UpdateBean updateBean = new UpdateBean();
 
-    private UpdateAppUtils(Activity activity) {
+    private UpdateAppUtils(AppCompatActivity activity) {
         this.activity = activity;
         getAPPLocalVersion(activity);
     }
 
-    public static UpdateAppUtils from(Activity activity) {
+    public static UpdateAppUtils from(AppCompatActivity activity) {
         return new UpdateAppUtils(activity);
     }
 
@@ -124,6 +125,8 @@ public class UpdateAppUtils {
      * 更新
      */
     private void toUpdate() {
-        UpdateAppActivity.launch(activity, updateBean);
+//        UpdateAppActivity.launch(activity, updateBean);
+        UploadDialog dialog = new UploadDialog();
+        dialog.show(activity.getSupportFragmentManager(), "dialog");
     }
 }
